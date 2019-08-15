@@ -1,0 +1,58 @@
+<div class="search">
+    <h1>Category</h1>
+    <p>See all your entries by category. If no category is selected all entries are shown. 
+        <br>If a month is not selected all entries for that category are listed.
+        If a month is selected and a year not entered the current year is used.</p>
+    <%= form_tag(category_path, :method => :get) do %>
+        <% @options = ['Food', 'Housing', 'Entertainment', 'Groceries', 'Transportation', 'Clothing', 'Medical', 'Other'] %>
+        Category <%= select_tag :category, options_for_select([["Select", ""]] + @options.to_a, params[:category]) %>
+        <% @options = [['January','01-01 01-31'], ['February','02-01 02-31'], ['March', '03-01 03-31'], 
+                    ['April', '04-01 04-31'], ['May','05-01 05-31'], ['June', '06-01 06-31'], 
+                    ['July', '07-01 07-31'], ['August', '08-01 08-31'], ['September', '09-01 09-31'], 
+                    ['October', '10-01 10-31'], ['November', '11-01 11-31'], ['December', '12-01 12-31']] %>
+        Month <%= select_tag :month, options_for_select([["Select", ""]] + @options.to_a, params[:month]) %>
+         Year <%= text_field_tag :year, '2019', :maxlength => 4, :size => 5 %>
+        <%= submit_tag 'Search', name: nil %>
+    <% end %>
+</div>
+<%@check = 1%> 
+<div class="container">
+    <div>
+    <% @entry.each do |b| %>
+        <%@total = b.amount + @total%> 
+        
+        <% if (@check % 2 == 1)%>  
+            <div class="row bg-light text-dark">
+        <% else %>
+            <div class="row">
+        <% end %>
+            <div class="col">
+                <strong>Category:</strong> 
+                <%= b.category%>
+            </div>
+            <div class="col">
+                <strong>Location:</strong>
+                <%= b.location %>
+            </div>
+            <div class="col">
+                <strong>Amount:</strong> $
+                <%= sprintf( "%0.02f", b.amount) %>
+            </div>
+            <div class="col">
+                <strong>Date:</strong> 
+                <%= b.try(:date).try(:strftime, ("%m-%d-%Y")) %>
+            </div>
+            <div class="col-1">
+            <%= link_to "Edit", edit_home_path(b)%>
+            </div>
+            <div class="col-1">
+            <%= link_to "Delete", home_path(b), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </div>
+        </div>
+        <% @check += 1 %>
+    <% end %>
+    </div>
+    <hr>
+    <h4><strong>Total: $</strong>
+    <%= sprintf( "%0.02f", @total ) %></h4>
+</div>

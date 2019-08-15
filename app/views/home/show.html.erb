@@ -1,0 +1,16 @@
+<h1>Welcome to budget App</h1>
+
+<%= @entry.each do |e| %>
+    <p>
+        <strong>Category: </strong>   
+        <%= e.category %>
+        <strong>Location: </strong>
+        <%= e.location %>
+        <strong>Amount: </strong>
+        <%= e.amount %>
+        <strong>Date: </strong>
+        <%= e.date %>
+        <%= link_to "Edit", edit_budget_path(e.id)%>
+        <%= link_to "Delete", budget_path(e.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </p>
+<% end %>
