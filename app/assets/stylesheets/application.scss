@@ -18,16 +18,21 @@
 
  @import "bootstrap";
 
+ body{
+   
+   font-family: Arial, Helvetica, sans-serif;
+
+ }
+ .body{
+    width: 80%;
+    margin: 0 auto; 
+    
+ }
+
  .search{
-     margin: 10px 15%;
+     margin: 10px 0;
      background-color: white;
      color: black;
- }
- .container{
-    background-color: rgb(52, 58, 64);
-    margin: 0 15%;
-    padding: 15px;
-    color: white;
  }
 
  hr{
@@ -35,12 +40,12 @@
  }
 
  .form-container{
-     margin: 20px 10%;
+     margin: 20px 0;
  }
 
  .info {
     background-color: rgb(52, 58, 64);
-    margin: 15px 0; 
+     
     padding: 15px;
     color: white;
  }
@@ -52,5 +57,10 @@
  .log-stuff{
      text-align: right;
      color: white;
+ }
+
+ footer{
+     text-align: center;
+     padding: 15px;
  }
  

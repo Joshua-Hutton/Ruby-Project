@@ -18,7 +18,7 @@
 
 <% @check = 1%>
 
-<div class="container">
+<div class="info">
     <% @entry.each do |b| %>
         <%@total = b.amount + @total%>    
        <% if (@check % 2 == 1)%>  
@@ -47,6 +47,8 @@
             </div>
             <div class="col-1">
             <%= link_to "Delete", home_path(b), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </div>
+            <div class="col-1">
             </div>
         </div>
         <% @check += 1%>
