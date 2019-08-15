@@ -1,0 +1,46 @@
+<div class="form-container">
+    <h1>Add Entry</h1>
+    <%= @notice %>
+    <%= form_for :entry, url: {action: "create"} do |f| %>
+        <table>
+            <tr>
+                <td>
+                <%= f.label :category%>
+                </td>
+                <td>
+                <% @options = ['Food', 'Housing', 'Entertainment', 'Groceries', 'Transportation', 'Clothing', 'Medical', 'Other'] %>
+                <%= f.select :category, options_for_select([["Select", ""]] + @options.to_a) %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <%= f.label :location %>
+                </td>
+                <td>
+                <%= f.text_field :location %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <%= f.label :amount %>
+                </td>
+                <td>
+                <%= f.text_field :amount %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <%= f.label :date %>
+                </td>
+                <td>
+                <%= f.text_field :date %>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <%= f.submit %>
+        </p>
+        
+    <% end %>
+</div>
+
