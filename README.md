@@ -15,15 +15,32 @@ The application I built takes in data from the user of transactions with the fie
 There are two additional pages that list all of that user’s entries. The first called category and the second location. They both function similarly to each other and allow the user to narrow down the results of the data by their respective names. Category offers the option to look at all data of a certain category and further narrow results down by month. Location does the same but by location. I set it up this way because of the way I originally learned to write a search method within Ruby on Rails. With what I now know I would rework the application to offer all of this on the home index to simplify the app but I ran out of time to refactor the code.
 
 I developed this project with the following:
-OS: Ubuntu 18.04
-IDE/text editor: Visual Studio Code
-version control: git
-Ruby 2.6.3p62
-Rails 6.0.0.rc2
-Bootstrap 4.3.1
-chartkick 3.2.1
-PostgreSQL 10.10
-
+<ul>
+  <li>
+    OS: Ubuntu 18.04
+  </li>
+  <li>
+    IDE/text editor: Visual Studio Code
+  </li>
+  <li>
+    version control: git
+  </li>
+  <li>
+    Ruby 2.6.3p62
+  </li>
+  <li>
+    Rails 6.0.0.rc2
+  </li>
+  <li>
+    Bootstrap 4.3.1
+  </li>
+  <li>
+    chartkick 3.2.1
+  </li>
+  <li>
+    PostgreSQL 10.10
+  </li>
+</ul>
 Along with other dependencies listed in the gemfile, these are just the ones I specifically added.
 
 <h3>Why Ubuntu</h3>
