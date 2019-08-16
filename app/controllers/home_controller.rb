@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     before_action :require_login
   def index
-    @total = 0.0
+   
     if params[:month] && params[:month] != ""
         @d = params[:month].split
         if !params[:year] || params[:year] == ""

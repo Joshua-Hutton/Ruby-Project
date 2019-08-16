@@ -1,7 +1,6 @@
 class CategoryController < ApplicationController
     def index
-        @total = 0.0
-        
+       
         if params[:category]
             if params[:month] && params[:month] != "" 
                 @d = params[:month].split

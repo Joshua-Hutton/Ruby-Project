@@ -22,7 +22,7 @@
 
             <%= column_chart @entry.group(:category).sum(:amount), width: "90%", height: "400px" %>
             <%= pie_chart @entry.group(:category).sum(:amount), width: "90%", height: "400px" %>
-            
+            <%  @total = 0.0 %>
             <%@check = 1%> 
         <div class="info">
             <div>
