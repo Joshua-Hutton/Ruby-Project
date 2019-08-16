@@ -23,7 +23,7 @@ class HomeController < ApplicationController
   end 
 
   def create
-     
+      
       @entry = Entry.new(entry_params)
       @entry.user_id = session[:user_id]
       if(@entry.save)
