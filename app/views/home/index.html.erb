@@ -27,7 +27,7 @@
         <div class="info">
             <div>
             <% @entry.each do |b| %>
-                <%@total = b.amount + @total%> 
+                <%@total += b.amount%> 
                 
                 <% if (@check % 2 == 1)%>  
                     <div class="row bg-light text-dark">
