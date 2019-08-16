@@ -28187,3 +28187,96 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 1.2ms | Allocations: 21008)
 
 
+Started GET "/" for 127.0.0.1 at 2019-08-15 21:24:24 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.4ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 54.0ms | Allocations: 9781)
+Completed 200 OK in 1113ms (Views: 1067.6ms | ActiveRecord: 17.2ms | Allocations: 1323596)
+
+
+Started GET "/home/new" for 127.0.0.1 at 2019-08-15 21:24:29 -0400
+Processing by HomeController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/new.html.erb within layouts/application
+  Rendered home/new.html.erb within layouts/application (Duration: 10.5ms | Allocations: 4058)
+Completed 200 OK in 36ms (Views: 31.8ms | ActiveRecord: 0.5ms | Allocations: 21363)
+
+
+Started GET "/category" for 127.0.0.1 at 2019-08-15 21:24:30 -0400
+Processing by CategoryController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering category/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/category/index.html.erb:21
+  Rendered category/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2917)
+Completed 200 OK in 29ms (Views: 26.1ms | ActiveRecord: 0.8ms | Allocations: 20758)
+
+
+Started GET "/location" for 127.0.0.1 at 2019-08-15 21:24:31 -0400
+Processing by LocationController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering location/index.html.erb within layouts/application
+  [1m[36mEntry Load (3.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/location/index.html.erb:22
+  Rendered location/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 2746)
+Completed 200 OK in 37ms (Views: 31.1ms | ActiveRecord: 3.9ms | Allocations: 20531)
+
+
+Started GET "/location" for 127.0.0.1 at 2019-08-15 21:38:28 -0400
+Processing by LocationController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering location/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.7ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/location/index.html.erb:22
+  Rendered location/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2796)
+Completed 200 OK in 26ms (Views: 21.7ms | ActiveRecord: 1.4ms | Allocations: 21200)
+
+
+Started GET "/home/new" for 127.0.0.1 at 2019-08-15 21:38:35 -0400
+Processing by HomeController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/new.html.erb within layouts/application
+  Rendered home/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1638)
+Completed 200 OK in 32ms (Views: 27.5ms | ActiveRecord: 0.7ms | Allocations: 19451)
+
+
+Started GET "/category" for 127.0.0.1 at 2019-08-15 21:38:36 -0400
+Processing by CategoryController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering category/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.8ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/category/index.html.erb:21
+  Rendered category/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2955)
+Completed 200 OK in 39ms (Views: 34.1ms | ActiveRecord: 1.1ms | Allocations: 20724)
+
+
+Started GET "/home" for 127.0.0.1 at 2019-08-15 21:38:37 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 4457)
+Completed 200 OK in 44ms (Views: 40.1ms | ActiveRecord: 1.9ms | Allocations: 21792)
+
+
