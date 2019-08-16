@@ -28061,3 +28061,129 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 28ms (Views: 24.7ms | ActiveRecord: 1.2ms | Allocations: 21008)
 
 
+Started GET "/category" for 127.0.0.1 at 2019-08-15 21:04:29 -0400
+Processing by CategoryController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering category/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/category/index.html.erb:21
+  Rendered category/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2956)
+Completed 200 OK in 27ms (Views: 22.6ms | ActiveRecord: 1.2ms | Allocations: 20834)
+
+
+Started GET "/home/new" for 127.0.0.1 at 2019-08-15 21:04:31 -0400
+Processing by HomeController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/new.html.erb within layouts/application
+  Rendered home/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1652)
+Completed 200 OK in 22ms (Views: 18.7ms | ActiveRecord: 0.3ms | Allocations: 18955)
+
+
+Started POST "/home" for 127.0.0.1 at 2019-08-15 21:04:43 -0400
+Processing by HomeController#create as HTML
+  Parameters: {"authenticity_token"=>"UY7xZ5uOy0423U21HD9SKLY4PkHQ6+q5HgHXcE9sOTsUdiWMT4txCZa+fuyLcV0/12OcW6ZGS/w/hflxRb5DLA==", "entry"=>{"category"=>"Food", "location"=>"ddd", "amount"=>"33", "date"=>"2019-07-29"}, "commit"=>"Save Entry"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/home_controller.rb:29:in `create'
+  [1m[36mEntry Create (0.7ms)[0m  [1m[32mINSERT INTO "entries" ("location", "category", "amount", "date", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["location", "ddd"], ["category", "Food"], ["amount", 33.0], ["date", "2019-07-29"], ["created_at", "2019-08-16 01:04:43.899415"], ["updated_at", "2019-08-16 01:04:43.899415"], ["user_id", 2]]
+  ↳ app/controllers/home_controller.rb:29:in `create'
+  [1m[35m (61.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/home_controller.rb:29:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 62.3ms | Allocations: 3137)
+
+
+Started GET "/" for 127.0.0.1 at 2019-08-15 21:04:43 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3951)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 1.4ms | Allocations: 21137)
+
+
+Started DELETE "/home/20" for 127.0.0.1 at 2019-08-15 21:04:50 -0400
+Processing by HomeController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RtRYgaevPrmaFrhvwlnZL4Nr/SuKkXHA8lnF0CLp2lImLT2yqjwykqhDIEh8uTo440hH2lUvBxsr4zPLKLI6xQ==", "id"=>"20"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:50:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/home_controller.rb:51:in `destroy'
+  [1m[36mEntry Destroy (0.5ms)[0m  [1m[31mDELETE FROM "entries" WHERE "entries"."id" = $1[0m  [["id", 20]]
+  ↳ app/controllers/home_controller.rb:51:in `destroy'
+  [1m[35m (18.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/home_controller.rb:51:in `destroy'
+Redirected to http://localhost:3000/
+Completed 302 Found in 26ms (ActiveRecord: 19.5ms | Allocations: 3087)
+
+
+Started GET "/" for 127.0.0.1 at 2019-08-15 21:04:50 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 3818)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 1.2ms | Allocations: 21010)
+
+
+Started GET "/home/19/edit" for 127.0.0.1 at 2019-08-15 21:04:57 -0400
+Processing by HomeController#edit as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mEntry Load (0.4ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:37:in `edit'
+  Rendering home/edit.html.erb within layouts/application
+  Rendered home/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1157)
+Completed 200 OK in 24ms (Views: 19.9ms | ActiveRecord: 0.6ms | Allocations: 18833)
+
+
+Started PATCH "/home/19" for 127.0.0.1 at 2019-08-15 21:05:05 -0400
+Processing by HomeController#update as HTML
+  Parameters: {"authenticity_token"=>"sSS7EvUCxwHfzBA7DZLs/ST3GITd7mCBePXy2nyAY3zujTgu3LROg8XfRu38R3dnceVD6tAodvRZDQKP97DeTg==", "entry"=>{"category"=>"Food", "location"=>"food and stuff", "amount"=>"54", "date"=>"2019-08-15"}, "commit"=>"Save Entry", "id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/home_controller.rb:41:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/home_controller.rb:42:in `update'
+  [1m[36mEntry Update (0.3ms)[0m  [1m[33mUPDATE "entries" SET "amount" = $1, "updated_at" = $2 WHERE "entries"."id" = $3[0m  [["amount", 54.0], ["updated_at", "2019-08-16 01:05:05.220235"], ["id", 19]]
+  ↳ app/controllers/home_controller.rb:42:in `update'
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/home_controller.rb:42:in `update'
+Redirected to http://localhost:3000/
+Completed 302 Found in 38ms (ActiveRecord: 32.5ms | Allocations: 3661)
+
+
+Started GET "/" for 127.0.0.1 at 2019-08-15 21:05:05 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 3818)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 1.2ms | Allocations: 21008)
+
+
