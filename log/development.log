@@ -28280,3 +28280,44 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 44ms (Views: 40.1ms | ActiveRecord: 1.9ms | Allocations: 21792)
 
 
+Started GET "/home" for 127.0.0.1 at 2019-08-15 21:50:33 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 61.9ms | Allocations: 10634)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 2.5ms | Allocations: 16242)
+
+
+  
+ActionView::Template::Error (can't convert nil into Float):
+    60:         </div>
+    61:         <hr>
+    62:         <h4><strong>Total: $</strong>
+    63:         <%= sprintf( "%0.02f", @total ) %></h4>
+    64:     </div>
+    65: </div> 
+  
+app/views/home/index.html.erb:63:in `sprintf'
+app/views/home/index.html.erb:63
+Started GET "/home" for 127.0.0.1 at 2019-08-15 21:51:26 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:23
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT SUM("entries"."amount") AS sum_amount, "entries"."category" AS entries_category FROM "entries" WHERE (cast(user_id as text) LIKE '%2%') GROUP BY "entries"."category"[0m
+  ↳ app/views/home/index.html.erb:24
+  [1m[36mEntry Load (0.6ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE (cast(user_id as text) LIKE '%2%')[0m
+  ↳ app/views/home/index.html.erb:29
+  Rendered home/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 9197)
+Completed 200 OK in 66ms (Views: 37.9ms | ActiveRecord: 14.7ms | Allocations: 31580)
+
+

@@ -18,7 +18,7 @@
                 Year <%= text_field_tag :year, '2019', :maxlength => 4, :size => 5 %>
                 <%= submit_tag 'Search', name: nil %>
             <% end %>
-            </div>
+            
 
             <%= column_chart @entry.group(:category).sum(:amount), width: "90%", height: "400px" %>
             <%= pie_chart @entry.group(:category).sum(:amount), width: "90%", height: "400px" %>
@@ -27,6 +27,8 @@
         <div class="info">
             <div>
             <% @entry.each do |b| %>
+                <%@total = b.amount + @total%> 
+                
                 <% if (@check % 2 == 1)%>  
                     <div class="row bg-light text-dark">
                 <% else %>

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     before_action :require_login
   def index
-    
+    @total = 0.0
     if params[:month] && params[:month] != ""
         @d = params[:month].split
         if !params[:year] || params[:year] == ""
@@ -9,8 +9,6 @@ class HomeController < ApplicationController
         end
         @entry = Entry.where('cast(user_id as text) LIKE ? AND cast(date as text) >= ? And cast(date as text) <= ?', 
                             "%#{session[:user_id]}%", "%#{ params[:year] + "/" + @d[0]}%", "%#{ params[:year] + "/" + @d[1]}%")
-        @total =  Entry.where('cast(user_id as text) LIKE ? AND cast(date as text) >= ? And cast(date as text) <= ?', 
-        "%#{session[:user_id]}%", "%#{ params[:year] + "/" + @d[0]}%", "%#{ params[:year] + "/" + @d[1]}%").sum(:amount)
     else
     @entry = Entry.where('cast(user_id as text) LIKE ?', "%#{session[:user_id]}%")
     end
