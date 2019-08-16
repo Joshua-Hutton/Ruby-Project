@@ -15,12 +15,12 @@
     <%= submit_tag 'Search', name: nil %>
 <% end %>
 </div>
-<%  @total = 0.0 %>
+
 <% @check = 1%>
 
 <div class="info">
     <% @entry.each do |b| %>
-        <%@total = b.amount + @total%>    
+       
        <% if (@check % 2 == 1)%>  
             <div class="row bg-light text-dark">
         <% else %>
@@ -55,5 +55,5 @@
     <% end %>
     <hr>
     <h4><strong>Total: $</strong>
-    <%= sprintf( "%0.02f", @total ) %></h4>
+    <%= sprintf( "%0.02f", @entry.sum(:amount) ) %></h4>
 </div>
