@@ -29,7 +29,7 @@ class HomeController < ApplicationController
       if(@entry.save)
           redirect_to root_url
       else
-          render 'create'
+          render 'new'
       end
   end
 
